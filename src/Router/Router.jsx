@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layouts/MainLayout";
+import Home from "../components/Home/Home";
 
 export const router = createBrowserRouter([
   {
@@ -8,12 +9,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: (
-          <p className="font-bold p-5  max-w-7xl  text-4xl mx-auto flex h-screen items-center justify-center">
-            This is a react Template (React + React Router Dom + Tailwind Css + Axios + TANSTACK query + TANSTACK dev
-            tool )
-          </p>
-        ),
+        element: <Home />,
       },
       {
         path: "/about",
