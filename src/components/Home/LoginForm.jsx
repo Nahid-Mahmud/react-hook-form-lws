@@ -69,7 +69,10 @@ const LoginForm = () => {
         <div>{errors?.root?.random?.message}</div>
 
         <Field>
-          <button type="submit" className="text-md text-white cursor-pointer p-1 border rounded-lg  bg-purple-500">
+          <button
+            type="submit"
+            className="text-md text-white cursor-pointer p-1 border rounded-lg  bg-purple-500 m-auto"
+          >
             Login
           </button>
         </Field>

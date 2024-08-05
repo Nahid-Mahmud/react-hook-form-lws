@@ -1,11 +1,11 @@
 import LoginForm from "./LoginForm";
+import RegistrationForm from "./RegistrationForm";
 
 const Home = () => {
   return (
-    <div>
-      This is home page
-      <br />
-      <LoginForm />
+    <div className="mt-10">
+      {/* <LoginForm /> */}
+      <RegistrationForm />
     </div>
   );
 };
