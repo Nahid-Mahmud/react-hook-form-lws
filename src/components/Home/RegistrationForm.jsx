@@ -1,7 +1,8 @@
 import React from "react";
-import { useFieldArray, useForm } from "react-hook-form";
+import { useFieldArray, useForm, Controller } from "react-hook-form";
 import FieldSet from "./FieldSet";
 import Field from "./Field";
+import NumberInput from "../NumberInput";
 
 const RegistrationForm = () => {
   const {
@@ -64,7 +65,7 @@ const RegistrationForm = () => {
             <Field error={errors?.fname} label={"Full Name"}>
               <input
                 {...register("fname", {
-                  required: "Full is required",
+                  required: "Full Name is required",
                 })}
                 id="fname"
                 type="text"
@@ -75,26 +76,42 @@ const RegistrationForm = () => {
                 }`}
               />
             </Field>
+
+            {/* field for picture /file upload */}
+            <Field error={errors?.picture} label={"Picture"}>
+              <input
+                {...register("picture", {
+                  required: "Picture is required",
+                })}
+                id="picture"
+                type="file"
+                name="picture"
+                placeholder="Enter Full Name"
+                className={`p-2 border box-border w-[300px] rounded-md ${
+                  errors?.picture ? "border-red-500" : "border-gray-200"
+                }`}
+              />
+            </Field>
+
             {/* age field */}
             <Field error={errors?.age} label={"Age"}>
-              <input
-                {...register("age", {
-                  max: {
-                    value: 100,
-                    message: "Age must be betoween 0 to 100",
-                  },
-                  min: {
-                    value: 0,
-                    message: "Age must be betoween 0 to 100",
-                  },
-                })}
-                id="age"
-                type="number"
+              <Controller
                 name="age"
-                placeholder="Enter Age"
-                className={`p-2 border box-border w-[300px] rounded-md ${
-                  errors?.age ? "border-red-500" : "border-gray-200"
-                }`}
+                control={control}
+                render={({ field: { ref, ...field } }) => (
+                  <NumberInput
+                    id="age"
+                    placeholder="Enter Age"
+                    className={`p-2 border box-border w-[300px] rounded-md ${
+                      !!errors?.age ? "border-red-500" : "border-gray-200"
+                    }`}
+                    {...field}
+                  />
+                )}
+                rules={{
+                  min: { value: 18, message: "You must be 18 years old" },
+                  max: { value: 100, message: "You must be 100 years old" },
+                }}
               />
             </Field>
           </FieldSet>
