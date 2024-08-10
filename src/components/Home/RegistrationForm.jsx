@@ -1,15 +1,13 @@
-import React from "react";
-import { useFieldArray, useForm, Controller } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import FieldSet from "./FieldSet";
 import Field from "./Field";
-import NumberInput from "../NumberInput";
+
 
 const RegistrationForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setError,
     control,
   } = useForm();
 
@@ -164,7 +162,7 @@ const RegistrationForm = () => {
         <Field>
           <button
             type="submit"
-            className="text-md text-white cursor-pointer p-3 border rounded-lg bg-purple-500 hover:bg-purple-700 w-full mt-6"
+            className="text-md text-white font-bold cursor-pointer p-3 border rounded-lg bg-purple-500 hover:bg-purple-700 w-fit mx-auto mt-6"
           >
             Register
           </button>
