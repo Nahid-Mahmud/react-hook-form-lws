@@ -1,7 +1,8 @@
-import { useFieldArray, useForm } from "react-hook-form";
+import { Controller, useFieldArray, useForm } from "react-hook-form";
 import FieldSet from "./FieldSet";
 import Field from "./Field";
-
+import { MdCancel } from "react-icons/md";
+import NumberInput from "../NumberInput";
 
 const RegistrationForm = () => {
   const {
@@ -86,8 +87,7 @@ const RegistrationForm = () => {
               }`}
             />
           </Field>
-
-          {/* <Field error={errors?.age} label={"Age"}>
+          <Field error={errors?.age} label={"Age"}>
             <Controller
               name="age"
               control={control}
@@ -95,18 +95,18 @@ const RegistrationForm = () => {
                 <NumberInput
                   id="age"
                   placeholder="Enter Age"
-                  className={`p-3 border w-full rounded-md focus:ring-2 focus:ring-purple-400 ${
-                    !!errors?.age ? "border-red-500" : "border-gray-300"
+                  className={`p-2 border box-border w-[300px] rounded-md ${
+                    !!errors?.age ? "border-red-500" : "border-gray-200"
                   }`}
                   {...field}
                 />
               )}
               rules={{
-                min: { value: 18, message: "You must be at least 18 years old" },
-                max: { value: 100, message: "You must be 100 years old or younger" },
+                min: { value: 18, message: "You must be 18 years old" },
+                max: { value: 100, message: "You must be 100 years old" },
               }}
             />
-          </Field> */}
+          </Field>
         </FieldSet>
 
         <div className="text-red-500 text-sm mt-2">{errors?.root?.random?.message}</div>
@@ -139,7 +139,7 @@ const RegistrationForm = () => {
                 className="mt-8 mr-2 text-2xl text-red-500 hover:text-red-700"
                 onClick={() => remove(index)}
               >
-                &#8722;
+                <MdCancel />
               </button>
             </div>
           ))}
