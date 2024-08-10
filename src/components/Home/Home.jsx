@@ -3,7 +3,7 @@ import RegistrationForm from "./RegistrationForm";
 
 const Home = () => {
   return (
-    <div className="mt-10">
+    <div>
       {/* <LoginForm /> */}
       <RegistrationForm />
     </div>
